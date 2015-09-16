@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#$ -N DEMENT
+#$ -t 1-50
+#$ -q bio,abio,free64
+#$ -l h_rt=24:00:00
+#$ -l mem_free=32G
+#$ -ckpt blcr
+
+if [ $SGE_TASK_ID -eq $SGE_TASK_FIRST ]
+then
+echo $(date +%y%m%d%H%M%S) > "datetime.txt"
+fi
+
+while read LINE
+do
+DATETIME=$LINE
+done <datetime.txt
+
+COMMAND="Rscript --no-restore DEMENTBatch.R $DATETIME $SGE_TASK_ID"
+OUTFILE="$DATETIME.$(printf %02d $SGE_TASK_ID).txt"
+
+cd $SGE_O_WORKDIR
+module load R
+$COMMAND > $OUTFILE
