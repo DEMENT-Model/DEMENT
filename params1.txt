@@ -1,5 +1,5 @@
-end_time	365
-pulses	3
+end_time	3
+pulses	1
 n_enzymes	50
 n_substrates	12
 n_uptake	14
@@ -68,8 +68,8 @@ Input_PO4	0
 Leaching	0.1
 Enz_min	0
 Enz_max	0
-x	100
-y	100
+x	10
+y	10
 taxa_per_box	0.01
 dist	1
 max_size_b	2
