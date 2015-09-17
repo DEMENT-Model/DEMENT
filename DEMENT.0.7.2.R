@@ -1005,7 +1005,7 @@ TraitModel <- function(job.time,task.ID){
   out <- vector("list",params["pulses",])
   for (i_p in 1:params["pulses",]) {
     zeros <- ifelse(i_p<10,"0","")
-    filename <- paste("outputs7/", timestamp, "_", zeros, i_p, "G.png", sep = "")
+    filename <- paste("outputs/", timestamp, "_", zeros, i_p, "G.png", sep = "")
     rows <- params["end_time",]%/%params["print.grid",] + 1
     png(file=filename,width=300*params["n_taxa",],height=300*rows)
     par(mfrow=c(rows,params["n_taxa",]),mar=c(3,3,3,3))
@@ -1049,7 +1049,7 @@ TraitModel <- function(job.time,task.ID){
       Tolerance
     )
     dev.off()
-    filename <- paste("outputs7/", timestamp, "_", zeros, i_p, ".png", sep = "")
+    filename <- paste("outputs/", timestamp, "_", zeros, i_p, ".png", sep = "")
     png(file=filename,width=2000,height=800)
     MakePlots(out[[i_p]])
     dev.off()
