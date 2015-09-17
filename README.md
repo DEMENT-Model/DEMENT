@@ -6,9 +6,17 @@ DEMENT is an agent-based numerical simulation model, open-source, coded in R, an
 Instructions to get started
 
 The current set of files is configured to run in batch mode, for example on a computer cluster, but you can also run in batch mode on your desktop computer from the command line.
+
 1) Download all of the files into the same directory.
+
 2) Create a subdirectory called "params".
+
 3) Move the "params1.txt" file into the params subdirectory.
+
 4) Modify any parameter values you wish (parameter descriptions are in "ParamDescription.txt").
+
 5) Open a terminal or command prompt in the directory you created with the model files.
+
 6) At the prompt, type (without the quotes): "Rscript --no-restore DEMENTBatch.R 000000000000 1".
+
+The program will create a directory called "outputs" where graphical outputs and the R workspace will be saved. The command line arguments are used to seed the random number generator and locate the correct parameter file. For example, in the shell script "DEMENT.ge", I generate a 12-character timestamp (YYMMDDHHMMSS) to which an integer is added to seed the random number generator in the model. The integer (second command line argument) is just the task number from the Grid Engine scheduler and is also used to match up a specific model run with the parameter file. If you want to seed the random number generator with a specific value (to replicate a run for instance), then change the "set.seed" parameter to 1 in the parameter file. This will override the first command line argument. The second command line argument must match the integer in your "paramsXX.txt" filename.
